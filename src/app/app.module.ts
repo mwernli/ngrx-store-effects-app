@@ -12,6 +12,7 @@ import {storeFreeze} from 'ngrx-store-freeze';
 import {AppComponent} from './containers/app/app.component';
 import {CustomSerializer, reducers} from "./store/reducers";
 import {RouterStateSerializer, StoreRouterConnectingModule} from "@ngrx/router-store";
+import { effects } from './store';
 
 // this would be done dynamically with webpack for builds
 const environment = {
@@ -38,7 +39,7 @@ export const ROUTES: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES),
     StoreModule.forRoot(reducers, {metaReducers}),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot(effects),
     StoreRouterConnectingModule,
     environment.development ? StoreDevtoolsModule.instrument() : [],
   ],
